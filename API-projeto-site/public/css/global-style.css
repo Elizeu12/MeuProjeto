@@ -1,0 +1,213 @@
+@keyframes flutuando{
+	0%,100%{
+		transform:translatey(0)
+	}
+	50%{
+		transform:translatey(-30px)
+	}
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.header{
+    color: white;
+    overflow: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    position: fixed;
+    float: inline-start;
+    top: 0;
+    overflow: hidden;
+    z-index: 99;
+}
+.textdecoration{
+    text-decoration:none;
+    color: #C7EAFB;
+}
+.textdecoration:target {
+  scroll-margin-top: .8em;
+}
+.titulos{
+    color: rgb(0, 0, 255);
+    text-decoration:none;
+}
+.navbar{
+    float: right;
+    list-style: none;
+    width: 50%;
+}
+.container {
+    width: 80%;
+    margin: auto;
+}
+img{
+    width: 10%;
+}
+li{
+    float: left;
+    margin-left: 5%;
+    text-transform: uppercase;
+}
+.navlogcad{
+    right: 3%;
+    top: 17%;
+    position: absolute;
+}
+.fundohome{
+    background-image: url(../imagens/fundoindexPI~1.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.fundologin{
+    background-image: url(../imagens/fundoform.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.padraoselect{
+    width: 100%;
+    height: 100vh;
+}
+.indextexto{
+    text-align: center;
+    width: 100%;
+    color: #00AEEF;
+    top: 50%;
+    position: relative;
+    display:table;
+    background: #000000;
+    border: 14px solid #00AEEF;
+    box-sizing: border-box;
+    border-radius: 50% 20% / 10% 40%;
+}
+.astronauta{
+    position: absolute;
+    width: 10%;
+    right: 0;
+    animation: flutuando 6s ease-in-out infinite;
+}
+.astronauta0{
+    top: 70vh;
+}
+.astronauta1{
+    top: 170vh;
+}
+.astronauta2{
+    top: 270vh;
+}
+.astronauta3{
+    top: 370vh;
+}
+.astronauta4{
+    top: 470vh;
+}
+.astronauta5{
+    top: 570vh;
+}
+.astronautaform{
+    position: absolute;
+    right: 30vh;
+    width: 60vh;
+    top: 12vh;
+    animation: flutuando 6s ease-in-out infinite;
+}
+.texto{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 250%;
+}
+.balao{
+    border-radius: 10px 10px 0 10px;
+    background-color: #00AEEF;
+    width: 20%;
+    height: auto;
+    position: absolute;
+    right: 10%;
+    text-align: center;
+    animation: flutuando 6s ease-in-out infinite;
+}
+.balao1{
+    border-radius: 10px 10px 0 10px;
+    background-color: #C7EAFB;
+    width: 30%;
+    height: auto;
+    position: absolute;
+    right: 10%;
+    text-align: center;
+    animation: flutuando 6s ease-in-out infinite;
+}
+.semestilo{
+    margin: 0;
+}
+.fundoum{
+    height: 100vh;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(3,8,79,1) 54%);
+    text-align: center;
+}
+
+.fundoDois{
+    height: 100vh;
+    background: rgb(3,8,79);
+    background: linear-gradient(180deg, rgba(3,8,79,1) 0%, rgba(5,22,255,1) 76%, rgba(54,124,255,1) 100%);
+    text-align: center;
+}
+.fundoTres{
+    height: 100vh;
+    background: rgb(54,124,255);
+    background: linear-gradient(180deg, rgba(54,124,255,1) 0%, rgba(93,148,253,1) 47%, rgba(113,191,255,1) 100%);
+    text-align: center;
+}
+.fundoQuatro{
+    height: 100vh;
+    background: rgb(113,191,255);
+    background: linear-gradient(180deg, rgba(113,191,255,1) 0%, rgba(113,191,255,1) 59%, rgba(255,255,255,1) 99%);
+    text-align: center;
+}
+form{
+    position: absolute;
+    width: 30%;
+    height: 50vh;
+    top: 30vh;
+    left: 30vh;
+    background: #C7EAFB;
+    border-radius: 50px;
+    text-align: center;
+}
+input{
+    width: 50%;
+    height: 15%;
+    background: #4451FA;
+    border: 2px solid #00AEEF;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 2%;
+}
+input::placeholder{
+    color: white;
+    font-size: 150%;
+}
+button{
+    background: #040EA3;
+    border: 2px solid #00AEEF;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-top: 10%;
+    width: 30%;
+    height: 15%;
+    color: white;
+}
+.iframe{
+    border-radius: 20px;
+    width:40%;
+    height:40vh;
+}

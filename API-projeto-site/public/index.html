@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>index</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/global-style.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="./testes/Logo-teste.jpg" alt="">
+            <ul class="navbar">
+                <li><h2><a class="textdecoration" href="#list-item-1">Home</a></h2></li>
+                <li><h2><a class="textdecoration" href="#list-item-2">pag1</a></h2></li>
+                <li><h2><a class="textdecoration" href="#list-item-3">pag2</a></h2></li>
+                <li><h2><a class="textdecoration" href="#list-item-4">pag3</a></h2></li>
+                <li><h2><a class="textdecoration" href="#list-item-5">pag3</a></h2></li>
+            </ul>
+        </div>
+        <h3 class="navlogcad">
+            <a class="textdecoration" href="login.html">login</a> 
+            <br>
+            <br>
+            <a class="textdecoration" href="cadastro.html">Cadastro</a>
+        </h3>
+    </div>
+    <section id="list-item-1" class="fundohome padraoselect" >
+        <div class="indextexto">
+            <h1 class="texto">Te levando mais perto das estrelas</h1>
+        </div>
+        <div class="balao astronauta0">
+            <p>
+                <h4 class="semestilo">Você esta bem alto, desça com cuidado!</h4>
+            </p>
+        </div>
+        <img class="astronauta astronauta0 " src="./imagens/astronauta_espaco.svg" alt="">
+    </section>
+    <section id="list-item-2" class="padraoselect fundoum">
+        <div id="av-orbit" >
+            <iframe class="iframe" src="https://ustream.tv/embed/17074538" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" ></iframe>
+        </div>
+        <div onclick="" class="balao1 astronauta1">
+            <p>
+                <h4 class="semestilo">Uau! você já esta na Termosfera.
+                    A mesma altura da Estação espacial 
+                    internacional (ISS) cerca de 408 km de altura
+                    Se ficou curioso, sobre a iss, pode ver algumas informações clicando na iss.
+                </h4>
+            </p>
+        </div>
+        <img class="astronauta astronauta1 " src="./imagens/astronauta2.svg" alt="">
+    </section>
+    <section id="list-item-3" class="padraoselect fundoDois">
+        <div class="balao1 astronauta2">
+            <p>
+                <h4 class="semestilo">Que frio, está mais ou menos -100ºC, na Mesosfera a 80Km da Terra, é por aqui que podemos ver meteoritos, também conhecidos como estrelas cadentes.
+                </h4>
+            </p>
+        </div>
+        <img class="astronauta astronauta2 " src="./imagens/astronauta_espaco.svg" alt="">
+    </section>
+    <section id="list-item-4" class="padraoselect fundoTres">
+        <div class="balao1 astronauta3">
+            <p>
+                <h4 class="semestilo">Puxa, já estamos a 50Km da Terra, na Estratosfera, sabe o gás ozônio? Então, ele fica por aqui, por isso também é conhecida como camada de ozônio.  
+                </h4>
+            </p>
+        </div>
+        <img class="astronauta astronauta3  " src="./imagens/astronauta_espaco.svg" alt="">
+    </section>
+    <section id="list-item-5" class="padraoselect fundoQuatro">
+        <div class="balao astronauta4">
+            <p>
+                <h4 class="semestilo">Eeh! chegamos ao solo, agora podemos começar nossos experimentos, que tal tentar descobrir um novo planeta?
+                </h4>
+            </p>
+        </div>
+        <img class="astronauta astronauta4" id="imgultima" src="./imagens/astronauta_espaco.svg" alt="">
+    </section>
+</body>
+</html>
+<script>
+
+    let el = document.getElementById('list-item-5');
+    // utiliza método
+    let elCoordenadas = el.getBoundingClientRect();
+    window.addEventListener("scroll", function (event) {
+    var scroll = this.scrollY;
+    // verificar as propriedades com as coord
+    console.log("cordenada"+elCoordenadas.y);
+    if (Number(elCoordenadas.y) == Number(scroll)) {
+        alert("Foi")
+        console.log("foi")
+    }
+    console.log(scroll)
+});
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/global-style.css'>
+</head>
+<body class="fundologin">
+    <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+        <h1>Login</h1>
+        <input type="text" class="input-padrao" name="login_html" placeholder="E-mail:">
+        <br>
+        <input type="text" class="input-padrao" name="nome" placeholder="Nome:">
+        <br>
+        <input type="password" class="input-padrao" name="senha" placeholder="Senha:">
+        <div id="div_erro" class="msg_erro"></div>
+        <br>
+        <button id="btn_entrar" type="submit" id="btn_entrar" class="btn-green">Entrar</button>
+    </form>
+    <img class="astronautaform efeito-flutuante" src="./imagens/astronofoguete.svg" alt="">
+</body>
+</html>
+<script src='cadastro.js'></script>
