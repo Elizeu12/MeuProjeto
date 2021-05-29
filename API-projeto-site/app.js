@@ -9,6 +9,9 @@ var indexRouter = require('./routes/index');
 var usuariosRouter = require('./routes/usuarios');
 var leiturasRouter = require('./routes/leituras');
 
+var indexRouter = require('./routes/index');
+var apiSensores = require('./routes/api-sensores');
+
 var app = express();
 
 app.use(logger('dev')); 
@@ -21,4 +24,9 @@ app.use('/', indexRouter);
 app.use('/usuarios', usuariosRouter);
 app.use('/leituras', leiturasRouter);
 
+app.use('/', indexRouter);
+app.use('/api', apiSensores);
+
 module.exports = app;
+
+
