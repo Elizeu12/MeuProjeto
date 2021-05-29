@@ -19,7 +19,9 @@
 
     <div class="header">
         <div class="container">
-            <h1 class="titulo"><span class="highlight">Projeto</span></h1>
+            <div class="imguser">
+                
+            </div>
             <div class="usuario">
                 <h3>Olá, <b id="b_usuario"></b></h3>
             </div>
@@ -36,10 +38,12 @@
     <div class="dashboard">
         <div class="container">
 
-            <div id="chart_div" style="width: 400px; height: 120px;"></div>
         </div>
 
     </div>
+        <div class="graficos">
+            <div id="chart_div" class="gauge"></div>
+        </div>
     </div>
 
 
@@ -107,7 +111,7 @@
         ]);
 
         var options = {
-            width: 700, height: 320,
+            width: 200, height: 320,
             redFrom: 90, redTo: 100,
             yellowFrom: 75, yellowTo: 90,
             minorTicks: 5
@@ -128,8 +132,8 @@
     }
 
     // Descomente abaixo se quiser inserir dados a cada X segundos  
-    setInterval(function () {
-        sendData(iduser);
-    }, 3000);
+    // setInterval(function () {
+    //     sendData(iduser);
+    // }, 3000);
 
 </script>

@@ -19,7 +19,7 @@ a {
     background-color: #232323;
     width: 20%;
     height: 100%;
-    position: fixed;
+    position: absolute;
 }
 
 .header .container .highlight {
@@ -79,6 +79,7 @@ a {
     width: 80%;
     height: 100%;
     margin-left: auto;
+    float: left;
 }
 
 .dashboard h1 {
@@ -88,4 +89,22 @@ a {
 .dashboard .input-padrao {
     width: 50%;
     display: inline-block;
+}
+.imguser{
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    margin: 12% 0 0 15%;
+    background-color: #ecf0f1;
+}
+.graficos{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 20%;
+    background-color: #232323;
+}
+.gauge{
+    margin: 0 auto;
+    width: 70%;
 }
