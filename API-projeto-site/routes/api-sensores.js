@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 // var Leitura = require('../models').Leitura;
+
+// var Usuario = sessionStorage.id_usuario_meuapp
+// var idDado = sessionStorage.idDado_meuapp
 var env = process.env.NODE_ENV || 'development';
 
 // const { ArduinoDataTemp } = require("../app-sensores/newserial");
@@ -9,26 +12,27 @@ var env = process.env.NODE_ENV || 'development';
 
 // const { ArduinoDataSwitch } = require("../app-sensores/serialSwitch");
 const { ArduinoDataLuminosity } = require("../app-sensores/serialLuminosidity");
-teste = 0
-router.get("/sendData", (request, response) => {
-	// const temperature = ArduinoDataTemp.List[ArduinoDataTemp.List.length - 1];
-    console.log(teste)
-	// const Humidity = ArduinoDataHumidity.List[ArduinoDataHumidity.List.length - 1];
-	const luminosidade = ArduinoDataLuminosity.List[ArduinoDataLuminosity.List.length -1]
 
+var idDado;
+
+
+router.get("/sendData/:iduser", (request, response) => {
+	// const temperature = ArduinoDataTemp.List[ArduinoDataTemp.List.length - 1];
+	// const Humidity = ArduinoDataHumidity.List[ArduinoDataHumidity.List.length - 1];
+	var idUsuario = request.params.iduser
+
+	const luminosidade = ArduinoDataLuminosity.List[ArduinoDataLuminosity.List.length - 1]
+	console.log("Id do usuario aqui kkkkkkkkkk " + idUsuario)
 	var instrucaoSql = ""
 
 	if (env == "dev") {
 
 		// Na variável abaixo, coloque o Insert que será executado no Workbench
 		// salvo exceções, é igual a SQL Server
-        
-		instrucaoSql = `INSERT into dados (dadoSensor, DataeHora)
-		values (${luminosidade + 10},'${agora()}')
-        INSERT into estrela (Fkdado, Fkusuario, Fkplaneta,NomeEstrela,qtdPlanetas)
-        (${teste},${teste},null,"Alpha Centaury",null);
-        `;
+
+		instrucaoSql = `INSERT into dados (dadoSensor) values (${luminosidade + 10});`;
 		
+
 	} else {
 
 		// Na variável abaixo, coloque o Insert que será executado no SQL Server
@@ -37,19 +41,34 @@ router.get("/sendData", (request, response) => {
 		instrucaoSql = `INSERT into dbo.leitura (temperatura, umidade, momento, fkcaminhao)
 		values (${temperature + 10}, ${Humidity + 20}, '${agora()}', 1)`;
 	}
-
 	sequelize.query(instrucaoSql, {
 		//model: Leitura,
 		//mapToModel: true
 	}).then(resultado => {
-			console.log(`\n\nDado viado com sucesso!\nO comando executado foi como abaixo:\n`);
-			console.log(instrucaoSql)
-			console.log(`\nFim do comando SQL executado.`);
-			response.status(200).send("Dado inserido com sucesso.");
-		}).catch(erro => {
-			console.error(erro);
-			response.status(500).send(erro.message);
-		});
+		console.log(`\n\nDado viado com sucesso!\nO comando executado foi como abaixo:\n`);
+		console.log(instrucaoSql)
+		idDado = resultado[0]
+		console.log(`\nFim do comando SQL executado.`);
+		response.status(200).send("Dado inserido com sucesso.");
+	}).catch(erro => {
+		console.error(erro);
+		response.status(500).send(erro.message);
+	});
+
+	instrucaoSql1 = `INSERT into estrela values(${idDado},${idUsuario},null,"Alpha Centaury",null);`
+	
+	sequelize.query(instrucaoSql1, {
+		//model: Leitura,
+		//mapToModel: true
+	}).then(resultado => {
+		console.log(`\n\nDado viado com sucesso!\nO comando executado foi como abaixo:\n`);
+		console.log(instrucaoSql)
+		console.log(`\nFim do comando SQL executado.`);
+		response.status(200).send("Dado inserido com sucesso.");
+	}).catch(erro => {
+		console.error(erro);
+		response.status(500).send(erro.message);
+	});
 });
 function agora() {
 	const agora_d = new Date();

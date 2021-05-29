@@ -10,6 +10,7 @@
     <!-- script do google charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="funcoes.js"></script>
+    <script type="text/javascript" src="../routes/api-sensores.js"></script>
 
 </head>
 
@@ -50,7 +51,7 @@
     var Valores = 0
     let usuario;
     iduser = sessionStorage.id_usuario_meuapp
-    console.log(iduser)
+    console.log(iduser) 
     verificar_autenticacao();
 
     // só mexer se quiser alterar o tempo de atualização
@@ -119,15 +120,16 @@
         chart.draw(data, options);
     }
 
-    function sendData() {
+    function sendData(iduser) {
         var http = new XMLHttpRequest();
-        http.open('GET', 'http://localhost:3000/api/sendData', false);
+        console.log("Id aqui aaaaaaaaaaaaaaa "+iduser)
+        http.open('GET', `http://localhost:3000/api/sendData/${iduser}`, false);
         http.send(null);
     }
 
     // Descomente abaixo se quiser inserir dados a cada X segundos  
     setInterval(function () {
-        sendData();
+        sendData(iduser);
     }, 3000);
 
 </script>
