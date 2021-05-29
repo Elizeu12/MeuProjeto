@@ -12,7 +12,7 @@ router.post('/autenticar', function(req, res, next) {
 	var login_backend = req.body.login_html; // depois de .body, use o nome (name) do campo em seu formulário de login
 	var senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login	
 	
-	let instrucaoSql = `select * from usuario_bd where login_bd='${login_backend}' and senha='${senha}'`;
+	let instrucaoSql = `select * from usuario_bd where Email='${login_backend}' and senha='${senha}'`;
 	
 	console.log(instrucaoSql);
 

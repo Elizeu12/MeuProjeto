@@ -5,27 +5,23 @@ var Leitura = require('../models').Leitura;
 var env = process.env.NODE_ENV || 'development';
 
 /* Recuperar as últimas N leituras */
-router.get('/ultimas/:idcaminhao', function(req, res, next) {
+router.get('/ultimas/:iduser', function(req, res, next) {
 	
 	// quantas são as últimas leituras que quer? 7 está bom?
 	const limite_linhas = 7;
 
-	var idcaminhao = req.params.idcaminhao;
+	var iduser = req.params.iduser;
 
-	console.log(`Recuperando as ultimas ${limite_linhas} leituras`);
+	console.log(`Recuperando as ultimas ${limite_linhas} dados`);
 	
 	let instrucaoSql = "";
 
 	if (env == 'dev') {
 		// abaixo, escreva o select de dados para o Workbench
-		instrucaoSql = `select 
-		temperatura, 
-		umidade, 
-		momento,
-		DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-		from leitura
-		where fkcaminhao = ${idcaminhao}
-		order by id desc limit ${limite_linhas}`;
+		instrucaoSql = `select nome,nomeEstrela,dadoSensor,DATE_FORMAT(Dataehora,'%H:%i:%s') from usuario_bd
+		inner join estrela on usuario_bd.idUsuario = estrela.Fkusuario
+		inner join dados on dados.idDado = estrela.Fkdado
+		where Fkusuario = ${iduser} order by idDado desc limit ${limite_linhas}`;
 	} else if (env == 'production') {
 		// abaixo, escreva o select de dados para o SQL Server
 		instrucaoSql = `select top ${limite_linhas} 
@@ -54,17 +50,20 @@ router.get('/ultimas/:idcaminhao', function(req, res, next) {
 });
 
 
-router.get('/tempo-real/:idcaminhao', function(req, res, next) {
-	console.log('Recuperando caminhões');
+router.get('/tempo-real/:iduser', function(req, res, next) {
+	console.log('Recuperando dados');
 	
 	//var idcaminhao = req.body.idcaminhao; // depois de .body, use o nome (name) do campo em seu formulário de login
-	var idcaminhao = req.params.idcaminhao;
+	var iduser = req.params.iduser;
 	
 	let instrucaoSql = "";
 	
 	if (env == 'dev') {
 		// abaixo, escreva o select de dados para o Workbench
-		instrucaoSql = `select temperatura, umidade, DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, fkcaminhao from leitura where fkcaminhao = ${idcaminhao} order by id desc limit 1`;
+		instrucaoSql = `select nome,nomeEstrela,dadoSensor,DATE_FORMAT(Dataehora,'%H:%i:%s') from usuario_bd
+		inner join estrela on usuario_bd.idUsuario = estrela.Fkusuario
+		inner join dados on dados.idDado = estrela.Fkdado
+		where Fkusuario = ${iduser} order by idDado desc`;
 	} else if (env == 'production') {
 		// abaixo, escreva o select de dados para o SQL Server
 		instrucaoSql = `select top 1 temperatura, umidade, FORMAT(momento,'HH:mm:ss') as momento_grafico, fkcaminhao from leitura where fkcaminhao = ${idcaminhao} order by id desc`;
@@ -89,13 +88,10 @@ router.get('/estatisticas', function (req, res, next) {
 	console.log(`Recuperando as estatísticas atuais`);
 
 	const instrucaoSql = `select 
-							max(temperatura) as temp_maxima, 
-							min(temperatura) as temp_minima, 
-							avg(temperatura) as temp_media,
-							max(umidade) as umidade_maxima, 
-							min(umidade) as umidade_minima, 
-							avg(umidade) as umidade_media 
-						from leitura`;
+							max(dadoSensor) as temp_maxima, 
+							min(dadoSensor) as temp_minima, 
+							avg(dadoSensor) as temp_media
+						from dados`;
 					
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })

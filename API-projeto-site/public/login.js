@@ -10,8 +10,9 @@ function entrar() {
 
             resposta.json().then(json => {
 
-                sessionStorage.login_usuario_meuapp = json.login_html;
-                sessionStorage.nome_usuario_meuapp = json.nome;
+                sessionStorage.login_usuario_meuapp = json.Email;
+                sessionStorage.nome_usuario_meuapp = json.Nome;
+                sessionStorage.id_usuario_meuapp = json.idUsuario; 
 
                 window.location.href = 'tempo-real.html';
             });
