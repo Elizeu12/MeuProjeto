@@ -84,11 +84,12 @@ router.get('/tempo-real/:iduser', function (req, res, next) {
 });
 
 // estatísticas (max, min, média, mediana, quartis etc)
-router.get('/tempo-real/:iduser', function (req, res, next) {
-	menosbrilho=req.params.menosbrilho
+router.get('/valoresplanetas', function (req, res, next) {
 	console.log(`Recuperando as estatísticas atuais`);
 
-	const instrucaoSql =`SELECT TIMEDIFF(${menosbrilho[0]}, ${menosbrilho[1]}) as dif`;
+	const instrucaoSql =`
+	select * from planetas
+	left join estrela on planetas.idplaneta = estrela.Fkplaneta order by idPlaneta desc limit 1;`;
 
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })

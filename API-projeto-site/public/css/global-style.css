@@ -209,16 +209,16 @@ form {
     height: 50vh;
     top: 30vh;
     left: 30vh;
-    background: #C7EAFB;
-    border-radius: 50px;
+    background: #FFF;
+    border-radius: 30px;
     text-align: center;
 }
 
 input {
     width: 50%;
     height: 15%;
-    background: #4451FA;
-    border: 2px solid #00AEEF;
+    background: #232323;
+    border: 2px solid #525151;
     box-sizing: border-box;
     border-radius: 10px;
     margin-bottom: 2%;
@@ -230,11 +230,10 @@ input::placeholder {
 }
 
 button {
-    background: #040EA3;
-    border: 2px solid #00AEEF;
+    background: #232323;
+    border: 2px solid #525151;
     box-sizing: border-box;
     border-radius: 10px;
-    margin-top: 10%;
     width: 30%;
     height: 15%;
     color: white;
