@@ -9,6 +9,7 @@
 
     <!-- script do google charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
     <script type="text/javascript" src="funcoes.js"></script>
     <script type="text/javascript" src="../routes/api-sensores.js"></script>
 
@@ -16,11 +17,10 @@
 
 <body onload="atualizacaoPeriodica()">
     <!--header inicio-->
-
     <div class="header">
         <div class="container">
             <div class="imguser">
-                
+
             </div>
             <div class="usuario">
                 <h3>Olá, <b id="b_usuario"></b></h3>
@@ -33,29 +33,44 @@
             </div>
         </div>
     </div>
-    <!--header fim-->
 
-    <div class="dashboard">
-        <div class="container">
-
-        </div>
+    <div class="graficos">
+        <input type="text" class="input-padrao" name="Estrela" placeholder="Estrela:">
+        <div id="chart_div" class="gauge"></div>
+        <canvas id="myChart" width="200" height="200"></canvas>
 
     </div>
-        <div class="graficos">
-            <div id="chart_div" class="gauge"></div>
-        </div>
+    <div id="id_fundo" class="fundo">
     </div>
 
 
+    <div id="abrirModal" class="modal">
+        <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+            <h2>Parece que temos planeta detectado!</h2>
+            <h3>De um nome para ele!</h3>
+            <input type="text" class="input-padrao" name="login_html" placeholder="Nome do planeta:">
+            <br>
+            <button id="btn_entrar" type="submit" id="btn_entrar" class="btn-green">Salvar</button>
+        </form>
+    </div>
+</body>
 
 </body>
 
 
 <script>
-    var Valores = 0
+
+    var Valores;
     let usuario;
+    var dataehora;
+    var incremento = 0;
+    var conferir = 0;
+    var referencia = 0
+    var diferenca
+    var menosbrilho = [];
+
     iduser = sessionStorage.id_usuario_meuapp
-    console.log(iduser) 
+    console.log(iduser)
     verificar_autenticacao();
 
     // só mexer se quiser alterar o tempo de atualização
@@ -82,11 +97,12 @@
                         // dos atributos que vem no JSON 
                         var dados = {
                             dadoSensor: resposta.dadoSensor,
-                            idDado: resposta.idDado
+                            idDado: resposta.idDado,
+                            dataehora: resposta.data
                         }
+                        dataehora = dados.dataehora;
 
-                        sessionStorage.idDado_meuapp = dados.idDado;
-                        
+                        console.log("Olha a hora aquiiiiiiiiiiiii " + dados.dataehora)
                         valores = dados.dadoSensor
                         console.log(dados.dadoSensor)
                         drawChart()
@@ -107,7 +123,7 @@
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Label', 'Value'],
-            ['Lumens', 0],
+            ['Brilho em %', 0],
         ]);
 
         var options = {
@@ -116,24 +132,125 @@
             yellowFrom: 75, yellowTo: 90,
             minorTicks: 5
         };
-
+        incremento++
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+        var porcentagem = (valores * 100) / 1024;
+        if (porcentagem <= 50) {
+            conferir++
+            if (incremento != conferir) {
 
-        data.setValue(0, 1, valores);
+                dataehora = dataehora.replace("T", " ");
+                dataehora = dataehora.replace("Z", "");
+                menosbrilho.push(dataehora)
+                console.log(menosbrilho[1])
+                referencia++
+                if (referencia == 2) {
+                    var inicio = menosbrilho[0];
+                    var termino = menosbrilho[1];
+
+                    const today = new Date(inicio);
+                    const endDate = new Date(termino);
+                    const days = parseInt((endDate - today) / (1000 * 60 * 60 * 24));
+                    const hours = parseInt(Math.abs(endDate - today) / (1000 * 60 * 60) % 24);
+                    const minutes = parseInt(Math.abs(endDate.getTime() - today.getTime()) / (1000 * 60) % 60);
+                    const seconds = parseInt(Math.abs(endDate.getTime() - today.getTime()) / (1000) % 60);
+                    diferenca = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's'
+                    window.location.href = '#abrirmodal';
+                    abrirModal.classList.add("abrir")
+                    console.log("Media de hoaaaaaaaaaaaaaaa " + diferenca);
+                    menosbrilho = []
+                    menosbrilho.push(dataehora)
+                    incremento = 0;
+                    conferir = 0;
+                    referencia = 0;
+                }
+            }
+            else {
+                incremento = 0;
+                conferir = 0;
+            }
+        }
+
+        id_fundo.style.opacity = porcentagem / 100;
+        data.setValue(0, 1, porcentagem);
         console.log(valores)
         chart.draw(data, options);
     }
 
-    function sendData(iduser) {
-        var http = new XMLHttpRequest();
-        console.log("Id aqui aaaaaaaaaaaaaaa "+iduser)
-        http.open('GET', `http://localhost:3000/api/sendData/${iduser}`, false);
-        http.send(null);
+
+
+    const data = [];
+    const baixo = [];
+    var i = 95
+    let prev2 = 0;
+    for (let i = 0; i < 100; i++) {
+        baixo.push(i)
     }
 
+
+    var ctx = document.getElementById('myChart');
+    var meuGrafico = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: baixo,
+            datasets: [
+                {
+                    label: "Lumens",
+                    data: data,
+                    borderWidth: 2,
+                    radius: 0,
+                    borderColor: '#0000FF',
+                    backgroundColor: 'transparent',
+                },
+            ]
+        },
+        options: {
+            fill: false,
+            interaction: {
+                intersect: false
+            },
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "Lumens",
+                position: 'top',
+            },
+            legend: {
+                display: true,
+                reverse: true,
+                position: 'bottom'
+            },
+            layout: {
+                padding: {
+                    left: 50,
+                    top: 50
+                },
+
+                radius: 0
+
+            }
+        }
+    })
+
+
+
+
+    function sendData(iduser) {
+        var http = new XMLHttpRequest();
+        console.log("Id aqui aaaaaaaaaaaaaaa " + iduser)
+        http.open('GET', `http://localhost:3000/api/sendData/${iduser}`, false);
+        http.send(null);
+        meuGrafico.data.labels.push(i + 10);
+        meuGrafico.data.datasets.forEach((dataset) => {
+            dataset.data.push(valores);
+        });
+        meuGrafico.update();
+    }
+
+
     // Descomente abaixo se quiser inserir dados a cada X segundos  
-    // setInterval(function () {
-    //     sendData(iduser);
-    // }, 3000);
+    setInterval(function () {
+        sendData(iduser);
+    }, 3000);
 
 </script>
