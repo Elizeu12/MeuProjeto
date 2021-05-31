@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Usuario = require('../models').Usuario;
+var Planeta = require('../models').Planeta;
 
 let sessoes = [];
 
@@ -104,6 +105,23 @@ router.get('/', function(req, res, next) {
 	}).catch(erro => {
 		console.error(erro);
 		res.status(500).send(erro.message);
+  	});
+});
+
+
+router.post('/planeta', function(req, res, next) {
+	console.log('Planeta adicionado '  + req.body.orbita);
+	
+	Planeta.create({
+		NomePlaneta : req.body.planeta,
+		tempo_orbita : req.body.orbita
+	}).then(resultado => {
+		console.log(`Registro criado: ${resultado}`)
+        res.send(resultado);
+    }).catch(erro => {
+		console.error(erro);
+		res.status(500).send(erro.message);
+		console.log(erro.message)
   	});
 });
 

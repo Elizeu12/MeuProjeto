@@ -48,8 +48,11 @@
         <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
             <h2>Parece que temos planeta detectado!</h2>
             <h3>De um nome para ele!</h3>
-            <input type="text" class="input-padrao" name="login_html" placeholder="Nome do planeta:">
+            <input type="text" class="input-padrao" name="planeta" placeholder="Nome do planeta:">
             <br>
+            orbita
+            <br>
+            <input type="text" class="input-padrao" id="orbita" name="orbita" value="">
             <button id="btn_entrar" type="submit" id="btn_entrar" class="btn-green">Salvar</button>
         </form>
     </div>
@@ -67,6 +70,7 @@
     var conferir = 0;
     var referencia = 0
     var diferenca
+    var media
     var menosbrilho = [];
 
     iduser = sessionStorage.id_usuario_meuapp
@@ -98,8 +102,10 @@
                         var dados = {
                             dadoSensor: resposta.dadoSensor,
                             idDado: resposta.idDado,
-                            dataehora: resposta.data
+                            dataehora: resposta.data,
+                            media: resposta.media
                         }
+                        media = dados.media;
                         dataehora = dados.dataehora;
 
                         console.log("Olha a hora aquiiiiiiiiiiiii " + dados.dataehora)
@@ -155,7 +161,8 @@
                     const minutes = parseInt(Math.abs(endDate.getTime() - today.getTime()) / (1000 * 60) % 60);
                     const seconds = parseInt(Math.abs(endDate.getTime() - today.getTime()) / (1000) % 60);
                     diferenca = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's'
-                    window.location.href = '#abrirmodal';
+                   
+                    document.getElementById('orbita').value = diferenca;
                     abrirModal.classList.add("abrir")
                     console.log("Media de hoaaaaaaaaaaaaaaa " + diferenca);
                     menosbrilho = []
@@ -231,7 +238,26 @@
             }
         }
     })
+    function cadastrar() {
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/planeta", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
 
+            if (response.ok) {
+
+                window.location.href = 'tempo-real.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                });
+            }
+        });
+        return false;
+    }
 
 
 
