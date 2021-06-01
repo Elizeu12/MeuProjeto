@@ -1,100 +1,201 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>index</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/global-style.css'>
-    <script src='main.js'></script>
 </head>
+
 <body>
     <div class="header">
+
         <div class="container">
-            <img src="./testes/Logo-teste.jpg" alt="">
+
+            <img src="./imagens/2130.jpg" alt="">
+
             <ul class="navbar">
-                <li><h2><a class="textdecoration" href="#list-item-1">Home</a></h2></li>
-                <li><h2><a class="textdecoration" href="#list-item-2">pag1</a></h2></li>
-                <li><h2><a class="textdecoration" href="#list-item-3">pag2</a></h2></li>
-                <li><h2><a class="textdecoration" href="#list-item-4">pag3</a></h2></li>
-                <li><h2><a class="textdecoration" href="#list-item-5">pag3</a></h2></li>
+                <li>
+                    <h2><a class="textdecoration" href="#list-item-1">Home</a></h2>
+                </li>
+                <li>
+                    <h2><a class="textdecoration" href="#list-item-2">pag1</a></h2>
+                </li>
+                <li>
+                    <h2><a class="textdecoration" href="#list-item-3">pag2</a></h2>
+                </li>
+                <li>
+                    <h2><a class="textdecoration" href="#list-item-4">pag3</a></h2>
+                </li>
+                <li>
+                    <h2><a class="textdecoration" href="#list-item-5">pag3</a></h2>
+                </li>
             </ul>
+
         </div>
+
         <h3 class="navlogcad">
-            <a class="textdecoration" href="login.html">login</a> 
+            <a class="textdecoration" href="login.html">login</a>
             <br>
             <br>
             <a class="textdecoration" href="cadastro.html">Cadastro</a>
         </h3>
+
     </div>
-    <section id="list-item-1" class="fundohome padraoselect" >
+
+    <section id="list-item-1" class="fundohome padraoselect">
+
         <div class="indextexto">
-            <h1 class="texto">Te levando mais perto das estrelas</h1>
+            <h1 class="texto">Te deixando mais perto das estrelas</h1>
         </div>
         <div class="balao astronauta0">
             <p>
-                <h4 class="semestilo">Você esta bem alto, desça com cuidado!</h4>
+            <h4 class="semestilo">Você esta bem alto, desça com cuidado!</h4>
             </p>
         </div>
         <img class="astronauta astronauta0 " src="./imagens/astronauta_espaco.svg" alt="">
+
     </section>
     <section id="list-item-2" class="padraoselect fundoum">
-        <div id="av-orbit" >
-            <iframe class="iframe" src="https://ustream.tv/embed/17074538" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" ></iframe>
+
+        <div id="av-orbit" class="orbitaIss">
+
+            <script>
+                var avOrbitProperties = {
+                    size: 'small',
+                    lang: 'en'
+                };
+            </script>
+            <script src="https://astroviewer.net/widgets/widgets/orbit.js"></script>
+
         </div>
+
+        <iframe class="iframelive aparece" id="iframelive" src="https://ustream.tv/embed/17074538" scrolling="no"
+            allowfullscreen webkitallowfullscreen frameborder="0"></iframe>
+
+        <img class="iss" id="iss" onclick="animacao()" src="./imagens/iss-silhouette.svg" alt="">
+        <div class="informacao some" id="informacaoiss">
+            <ul>
+                <li>Altura da órbita: 408 km</li>
+                <li>Velocidade em órbita: 7,66 km/s cerca de 27.576 km/h</li>
+                <li>Data de lançamento: 20 de novembro de 1998</li>
+                <li>Potência: 120.000 watts</li>
+                <li>Custo: 150 bilhões USD</li>
+                <li>A ISS possui 109 metros de largura</li>
+                <li>73 metros de comprimento</li>
+                <li>20 metros de altura. </li>
+                <li>Praticamente do tamanho de um campo de futebol</li>
+                <li>Possui uma massa de 450 mil quilos</li>
+                <li>Temos um link para lives da iss <a href="https://eol.jsc.nasa.gov/ESRS/HDEV/">Clicando AQUI</a></li>
+
+            </ul>
+        </div>
+
         <div onclick="" class="balao1 astronauta1">
             <p>
-                <h4 class="semestilo">Uau! você já esta na Termosfera.
-                    A mesma altura da Estação espacial 
-                    internacional (ISS) cerca de 408 km de altura
-                    Se ficou curioso, sobre a iss, pode ver algumas informações clicando na iss.
-                </h4>
+            <h4 class="semestilo">Uau! você já esta na Termosfera.
+                A mesma altura da Estação espacial
+                internacional (ISS) cerca de 408 km de altura
+                Se ficou curioso, sobre a iss, pode ver algumas informações clicando na iss.
+            </h4>
             </p>
         </div>
         <img class="astronauta astronauta1 " src="./imagens/astronauta2.svg" alt="">
+
     </section>
     <section id="list-item-3" class="padraoselect fundoDois">
+        <img class="meteorito" id="" src="./imagens/meteorito.gif" alt=""
+            onclick="window.location.href='http://osm2.cartodb.com/tables/meteoritessize/embed_map?title=true&description=true&search=true&shareable=true&cartodb_logo=true&sql=&zoom=2&center_lat=39.075375179558346&center_lon=0'">
         <div class="balao1 astronauta2">
             <p>
-                <h4 class="semestilo">Que frio, está mais ou menos -100ºC, na Mesosfera a 80Km da Terra, é por aqui que podemos ver meteoritos, também conhecidos como estrelas cadentes.
-                </h4>
+            <h4 class="semestilo">Que frio, está mais ou menos -100ºC, na Mesosfera a 80Km da Terra, é por aqui que
+                podemos ver meteoritos, também conhecidos como estrelas cadentes.
+                Quer saber os locais que mais caem metoritos? Clique na imagem
+            </h4>
             </p>
         </div>
         <img class="astronauta astronauta2 " src="./imagens/astronauta_espaco.svg" alt="">
     </section>
     <section id="list-item-4" class="padraoselect fundoTres">
+        <img class="astronautarodando" id="" src="./imagens/felix.svg" alt="" onclick="window.location.href=''">
+
+        <div class="felixfala">
+            <p>
+            <h4 class="semestilo">Oii, meu nome é Felix Baumgartner e eu sou a primeira pessoa a quebrar a barreira do
+                som atingindo 1224 km/h em queda livre, pulei de uma altura de 38 mil metros de altura, na
+                estratosfera!!!
+            </h4>
+            <h4 class="semestilo">Quer saber mais? <a
+                    href="https://www.guinnessworldrecords.com.br/records/hall-of-fame/felix-baumgartner-first-person-to-break-sound-barrier-in-freefall#:~:text=Um%20número%20sem%20precedentes%20de,espaço%20de%20apenas%20três%20horas.">CLIQUE
+                    AQUI</a>
+            </h4>
+            </p>
+        </div>
+
         <div class="balao1 astronauta3">
             <p>
-                <h4 class="semestilo">Puxa, já estamos a 50Km da Terra, na Estratosfera, sabe o gás ozônio? Então, ele fica por aqui, por isso também é conhecida como camada de ozônio.  
-                </h4>
+            <h4 class="semestilo">Puxa, já estamos a 50Km da Terra, na Estratosfera, sabe o gás ozônio? Então, ele fica
+                por aqui, por isso também é conhecida como camada de ozônio.
+            </h4>
             </p>
         </div>
         <img class="astronauta astronauta3  " src="./imagens/astronauta_espaco.svg" alt="">
     </section>
     <section id="list-item-5" class="padraoselect fundoQuatro">
-        <div class="balao astronauta4">
+
+        <div class="balaochao astronauta4">
             <p>
-                <h4 class="semestilo">Eeh! chegamos ao solo, agora podemos começar nossos experimentos, que tal tentar descobrir um novo planeta?
-                </h4>
+            <h4 class="semestilo">Eeh! chegamos ao solo, quer saber como os planetas distantes são encontrados? Se sim,
+                clique no telescopio e depois faça o cadastro
+            </h4>
             </p>
         </div>
-        <img class="astronauta astronauta4" id="imgultima" src="./imagens/astronauta_espaco.svg" alt="">
+        <img class="astronautachao astronauta4" id="imgultima" src="./imagens/astronautachao.svg" alt="">
+        <img class="telescope" id="imgultima" src="./imagens/telescope.svg" alt="">
+        <div class="footer"></div>
+
     </section>
 </body>
+
 </html>
 <script>
-
+    var issconta = 0;
     let el = document.getElementById('list-item-5');
     // utiliza método
     let elCoordenadas = el.getBoundingClientRect();
     window.addEventListener("scroll", function (event) {
-    var scroll = this.scrollY;
-    // verificar as propriedades com as coord
-    console.log("cordenada"+elCoordenadas.y);
-    if (Number(elCoordenadas.y) == Number(scroll)) {
-        alert("Foi")
-        console.log("foi")
+        var scroll = this.scrollY;
+        // verificar as propriedades com as coord
+        console.log("cordenada" + elCoordenadas.y);
+        if (Number(elCoordenadas.y) == Number(scroll)) {
+            alert("Foi")
+            console.log("foi")
+        }
+        console.log(scroll)
+    });
+    function animacao() {
+        if (issconta == 0) {
+            iss.classList.add("issvai");
+            iss.classList.remove('iss');
+            iss.classList.add("issnovo");
+            iframelive.classList.remove("aparece")
+            iframelive.classList.add("some")
+            informacaoiss.classList.remove("some")
+            informacaoiss.classList.add("aparece")
+            issconta++
+        }
+        else if (issconta == 1) {
+            iss.classList.add("issvolta");
+            iss.classList.remove('issvai');
+            iss.classList.remove('issnovo');
+            iss.classList.add("iss");
+            iframelive.classList.add("aparece")
+            informacaoiss.classList.add("some")
+            issconta = 0
+        }
     }
-    console.log(scroll)
-});
+
+
 </script>

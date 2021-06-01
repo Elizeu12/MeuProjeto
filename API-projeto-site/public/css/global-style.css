@@ -7,6 +7,74 @@
         transform: translatey(-30px)
     }
 }
+@keyframes anIss {
+    from {
+        width: 20%;
+        left: 7%;
+        margin-top: 25%;
+        position: absolute;
+      }
+    
+      to {
+        width: 20%;
+        margin-top: 10%;
+        left: 70%;
+        position: absolute;
+      }		
+}
+@-webkit-keyframes anIss {
+	from {
+        width: 20%;
+        left: 7%;
+        margin-top: 25%;
+        position: absolute;
+      }
+    
+      to {
+        width: 20%;
+        margin-top: 10%;
+        left: 70%;
+        position: absolute;
+      }			
+}
+@keyframes anIssvolta {
+    from {
+        width: 20%;
+        margin-top: 10%;
+        left: 70%;
+        position: absolute;
+      }
+    
+      to {
+        width: 20%;
+        left: 7%;
+        margin-top: 25%;
+        position: absolute;
+      }		
+}
+@-webkit-keyframes anIssvolta {
+	from {
+        width: 20%;
+        margin-top: 10%;
+        left: 70%;
+        position: absolute;
+      }
+    
+      to {
+        width: 20%;
+        left: 7%;
+        margin-top: 25%;
+        position: absolute;
+      }		
+}
+@keyframes spin {
+    0% {
+     transform: rotateZ(0deg);
+    }
+    100% {
+     transform: rotateZ(360deg);
+    }
+   }
 
 html {
     scroll-behavior: smooth;
@@ -107,6 +175,11 @@ li {
     right: 0;
     animation: flutuando 6s ease-in-out infinite;
 }
+.astronautachao {
+    position: absolute;
+    width: 12%;
+    right: 0;
+}
 
 .astronauta0 {
     top: 70vh;
@@ -125,9 +198,17 @@ li {
 }
 
 .astronauta4 {
-    top: 470vh;
+    top: 463vh;
+    z-index: 2;
 }
-
+.telescope {
+    top: 445vh;
+    z-index: 2;
+    width: 20%;
+    position: absolute;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
 .astronauta5 {
     top: 570vh;
 }
@@ -159,7 +240,15 @@ li {
     text-align: center;
     animation: flutuando 6s ease-in-out infinite;
 }
-
+.balaochao {
+    border-radius: 10px 10px 0 10px;
+    background-color: #00AEEF;
+    width: 20%;
+    height: auto;
+    position: absolute;
+    right: 10%;
+    text-align: center;
+}
 .balao1 {
     border-radius: 10px 10px 0 10px;
     background-color: #C7EAFB;
@@ -209,7 +298,7 @@ form {
     height: 50vh;
     top: 30vh;
     left: 30vh;
-    background: #FFF;
+    background: #C7EAFB;
     border-radius: 30px;
     text-align: center;
 }
@@ -239,8 +328,97 @@ button {
     color: white;
 }
 
-.iframe {
+.iframelive {
     border-radius: 20px;
     width: 40%;
     height: 40vh;
+    margin-top: 10%;
+    position: absolute;
+}
+.iss{
+    width: 20%;
+    left: 7%;
+    margin-top: 25%;
+    position: absolute;
+    z-index: 10;
+}
+.informacao{
+    width: 50%;
+    left: 7%;
+    margin-top: 25%;
+    position: absolute;
+    border-radius: 20px;
+    color: white;
+}
+
+.some{
+    transition: 2s;
+    opacity: 0;
+}
+.aparece{
+    transition: 2s;
+    opacity: 1;
+}
+.issnovo{
+    width: 20%;
+    margin-top: 10%;
+    left: 70%;
+    position: absolute;
+}
+.issvai{
+    animation-name: anIss;
+	-webkit-animation-name: anIss;	
+	animation-duration: 2s;	
+	-webkit-animation-duration: 2s;
+}
+.issvolta{
+    animation-name: anIssvolta;
+	-webkit-animation-name: anIssvolta;	
+	animation-duration: 2s;	
+	-webkit-animation-duration: 2s;
+}
+.orbitaIss{
+    float:left;
+    width: 20%;
+    height: 20%;
+    margin-top: 12%;
+    margin-left: 2%;
+    position: absolute;
+}
+a{
+    text-decoration: none;
+    color: #00AEEF;
+}
+.meteorito{
+    width: 30%;
+    left: 10%;
+    margin-top: 12%;
+    position: absolute;
+    z-index: 10;
+}
+.astronautarodando{
+    width: 20%;
+    left: 10%;
+    margin-top: 10%;
+    position: absolute;
+    z-index: 10;
+    animation: spin 2s linear infinite;
+}
+.felixfala{
+    background-color: #C7EAFB;
+    border-radius: 30px 30px 30px 0 ;
+    background-color: #C7EAFB;
+    width: 30%;
+    height: auto;
+    position: absolute;
+    right: 30%;
+    margin-top: 15%;
+    text-align: center;
+}
+.footer{
+    width: 100%;
+    height: 10vh;
+    top: 490vh;
+    position: absolute;
+    background-color: teal;
 }
