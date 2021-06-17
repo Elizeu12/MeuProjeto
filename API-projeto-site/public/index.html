@@ -14,23 +14,23 @@
 
         <div class="container">
 
-            <img src="./imagens/2130.jpg" alt="">
+            <img src="./imagens/logo.svg"  onclick="window.location.href='#list-item-1'"alt="">
 
             <ul class="navbar">
                 <li>
                     <h2><a class="textdecoration" href="#list-item-1">Home</a></h2>
                 </li>
                 <li>
-                    <h2><a class="textdecoration" href="#list-item-2">pag1</a></h2>
+                    <h2><a class="textdecoration" href="#list-item-2">Termosfera</a></h2>
                 </li>
                 <li>
-                    <h2><a class="textdecoration" href="#list-item-3">pag2</a></h2>
+                    <h2><a class="textdecoration" href="#list-item-3">Mesosfera</a></h2>
                 </li>
                 <li>
-                    <h2><a class="textdecoration" href="#list-item-4">pag3</a></h2>
+                    <h2><a class="textdecoration" href="#list-item-4">Estratosfera</a></h2>
                 </li>
                 <li>
-                    <h2><a class="textdecoration" href="#list-item-5">pag3</a></h2>
+                    <h2><a class="textdecoration" href="#list-item-5">Troposfera</a></h2>
                 </li>
             </ul>
 
@@ -141,7 +141,7 @@
             </h4>
             </p>
         </div>
-        <img class="astronauta astronauta3  " src="./imagens/astronauta_espaco.svg" alt="">
+        <img class="astronauta astronauta3  " src="./imagens/astronauta2.svg" alt="">
     </section>
     <section id="list-item-5" class="padraoselect fundoQuatro">
 
@@ -153,7 +153,7 @@
             </p>
         </div>
         <img class="astronautachao astronauta4" id="imgultima" src="./imagens/astronautachao.svg" alt="">
-        <img class="telescope" id="imgultima" src="./imagens/telescope.svg" alt="">
+        <img class="telescope" id="imgultima" onclick="window.location.href='cadastro.html'" src="./imagens/telescope.svg" alt="">
         <div class="footer"></div>
 
     </section>
@@ -164,17 +164,17 @@
     var issconta = 0;
     let el = document.getElementById('list-item-5');
     // utiliza método
-    let elCoordenadas = el.getBoundingClientRect();
-    window.addEventListener("scroll", function (event) {
-        var scroll = this.scrollY;
-        // verificar as propriedades com as coord
-        console.log("cordenada" + elCoordenadas.y);
-        if (Number(elCoordenadas.y) == Number(scroll)) {
-            alert("Foi")
-            console.log("foi")
-        }
-        console.log(scroll)
-    });
+    // let elCoordenadas = el.getBoundingClientRect();
+    // window.addEventListener("scroll", function (event) {
+    //     var scroll = this.scrollY;
+    //     // verificar as propriedades com as coord
+    //     console.log("cordenada" + elCoordenadas.y);
+    //     if (Number(elCoordenadas.y) == Number(scroll)) {
+    //         alert("Foi")
+    //         console.log("foi")
+    //     }
+    //     console.log(scroll)
+    // });
     function animacao() {
         if (issconta == 0) {
             iss.classList.add("issvai");

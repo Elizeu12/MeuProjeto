@@ -32,7 +32,11 @@ a {
 }
 
 .header .container .highlight {
-    color: rgb(255, 255, 255)
+    color: rgb(255, 255, 255);
+}
+.scrolar{
+    overflow-y: scroll;
+    height: 30vh;
 }
 
 .usuario {

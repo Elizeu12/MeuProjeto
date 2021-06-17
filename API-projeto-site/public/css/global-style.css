@@ -115,7 +115,8 @@ body {
 .navbar {
     float: right;
     list-style: none;
-    width: 50%;
+    width: 65%;
+    font-size: 75%;
 }
 
 .container {
@@ -129,7 +130,7 @@ img {
 
 li {
     float: left;
-    margin-left: 5%;
+    margin-left: 2%;
     text-transform: uppercase;
 }
 
@@ -177,8 +178,8 @@ li {
 }
 .astronautachao {
     position: absolute;
-    width: 12%;
-    right: 0;
+    width: 20%;
+    right: 30%;
 }
 
 .astronauta0 {
@@ -198,12 +199,13 @@ li {
 }
 
 .astronauta4 {
-    top: 463vh;
+    top: 445vh;
     z-index: 2;
 }
 .telescope {
     top: 445vh;
     z-index: 2;
+    left: 30%;
     width: 20%;
     position: absolute;
     -webkit-transform: scaleX(-1);
@@ -241,7 +243,7 @@ li {
     animation: flutuando 6s ease-in-out infinite;
 }
 .balaochao {
-    border-radius: 10px 10px 0 10px;
+    border-radius: 10px 10px 10px 0;
     background-color: #00AEEF;
     width: 20%;
     height: auto;

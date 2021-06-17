@@ -4,7 +4,9 @@ let nome_usuario;
 function redirecionar_login() {
     window.location.href = 'login.html';
 }
-
+function redirecionar_index() {
+    window.location.href = 'index.html';
+}
 function verificar_autenticacao() {
     login_usuario = sessionStorage.login_usuario_meuapp;
     nome_usuario = sessionStorage.nome_usuario_meuapp;
@@ -21,7 +23,7 @@ function verificar_autenticacao() {
 function logoff() {
     finalizar_sessao();
     sessionStorage.clear();
-    redirecionar_login();
+    redirecionar_index();
 }
 
 function validar_sessao() {

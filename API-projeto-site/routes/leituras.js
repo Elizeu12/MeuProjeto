@@ -88,13 +88,13 @@ router.get('/valoresplanetas', function (req, res, next) {
 	console.log(`Recuperando as estatísticas atuais`);
 
 	const instrucaoSql =`
-	select * from planetas
-	left join estrela on planetas.idplaneta = estrela.Fkplaneta order by idPlaneta desc limit 1;`;
+	select NomePlaneta from planetas
+	left join estrela on planetas.idplaneta = estrela.Fkplaneta order by idPlaneta desc;`;
 
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 		.then(resultado => {
-			res.json(resultado[0]);
+			res.json(resultado);
 		}).catch(erro => {
 			console.error(erro);
 			res.status(500).send(erro.message);

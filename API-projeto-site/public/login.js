@@ -1,33 +1,42 @@
 function entrar() {
     aguardar();
     var formulario = new URLSearchParams(new FormData(form_login));
-    fetch("/usuarios/autenticar", {
-        method: "POST",
-        body: formulario
-    }).then(resposta => {
+    email = login_html.value
+    confere1 = email.indexOf('@')
+    confere2 = email.indexOf('.com')
+    if (confere1 >= 0 && confere2 >= 0) {
 
-        if (resposta.ok) {
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
 
-            resposta.json().then(json => {
+            if (resposta.ok) {
 
-                sessionStorage.login_usuario_meuapp = json.Email;
-                sessionStorage.nome_usuario_meuapp = json.Nome;
-                sessionStorage.id_usuario_meuapp = json.idUsuario; 
+                resposta.json().then(json => {
 
-                window.location.href = 'tempo-real.html';
-            });
+                    sessionStorage.login_usuario_meuapp = json.Email;
+                    sessionStorage.nome_usuario_meuapp = json.Nome;
+                    sessionStorage.id_usuario_meuapp = json.idUsuario;
 
-        } else {
+                    window.location.href = 'tempo-real.html';
+                });
 
-            console.log('Erro de login!');
+            } else {
 
-            resposta.text().then(texto => {
-                console.error(texto);
-                finalizar_aguardar(texto);
-            });
-        }
-    });
+                console.log('Erro de login!');
 
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+    }
+    else {
+        div_erro.innerHTML = "Insira os dados corretamente";
+        finalizar_aguardar();
+    }
     return false;
 }
 
